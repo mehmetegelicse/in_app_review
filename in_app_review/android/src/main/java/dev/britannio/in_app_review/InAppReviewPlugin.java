@@ -10,10 +10,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+
+import com.google.android.gms.tasks.Task;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.tasks.Task;
+
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -27,18 +29,15 @@ import io.flutter.plugin.common.MethodChannel.Result;
  * InAppReviewPlugin
  */
 public class InAppReviewPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
+    private final String TAG = "InAppReviewPlugin";
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
     /// when the Flutter Engine is detached from the Activity
     private MethodChannel channel;
-
     private Context context;
     private Activity activity;
-
     private ReviewInfo reviewInfo;
-
-    private final String TAG = "InAppReviewPlugin";
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -117,6 +116,7 @@ public class InAppReviewPlugin implements FlutterPlugin, MethodCallHandler, Acti
             Log.i(TAG, "isAvailable: The Play Store is available and Android 5 or later is being used");
             cacheReviewInfo(result);
         }
+
     }
 
     private void cacheReviewInfo(final Result result) {
