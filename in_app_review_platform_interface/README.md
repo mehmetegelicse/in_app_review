@@ -22,5 +22,5 @@ over breaking changes for this package.
 See https://flutter.dev/go/platform-interface-breaking-changes for a discussion
 on why a less-clean interface is preferable to a breaking change.
 
-[1]: ../in_app_review1
+[1]: ../in_app_review
 [2]: lib/in_app_review_platform_interface.dart
